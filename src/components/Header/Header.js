@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, WEIGHTS, QUERIES } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import Icon from '../Icon';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -22,12 +23,15 @@ const Header = () => {
           <Logo />
         </Side>
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink class="text-link" href="/sale">Sale</NavLink>
+          <NavLink class="text-link" href="/new">New&nbsp;Releases</NavLink>
+          <NavLink class="text-link" href="/men">Men</NavLink>
+          <NavLink class="text-link" href="/women">Women</NavLink>
+          <NavLink class="text-link" href="/kids">Kids</NavLink>
+          <NavLink class="text-link" href="/collections">Collections</NavLink>
+          <Icon class="icon-link" id="shopping-bag" strokeWidth={2} />
+          <Icon class="icon-link" id="search" strokeWidth={2} />
+          <Icon class="icon-link" id="menu" strokeWidth={2} />
         </Nav>
         <Side />
       </MainHeader>
@@ -67,6 +71,10 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
+  }
+
+  @media ${QUERIES.tabletAndUnder} {
+    display: none;
   }
 `;
 
