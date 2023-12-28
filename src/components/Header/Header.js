@@ -6,6 +6,8 @@ import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import Icon from '../Icon';
+import UnstyledButton from '../UnstyledButton';
+import VisuallyHidden from '../VisuallyHidden';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -19,21 +21,32 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
-        <Nav>
+        </LogoWrapper>
+        <DesktopNav>
           <NavLink class="text-link" href="/sale">Sale</NavLink>
           <NavLink class="text-link" href="/new">New&nbsp;Releases</NavLink>
           <NavLink class="text-link" href="/men">Men</NavLink>
           <NavLink class="text-link" href="/women">Women</NavLink>
           <NavLink class="text-link" href="/kids">Kids</NavLink>
           <NavLink class="text-link" href="/collections">Collections</NavLink>
-          <Icon class="icon-link" id="shopping-bag" strokeWidth={2} />
-          <Icon class="icon-link" id="search" strokeWidth={2} />
-          <Icon class="icon-link" id="menu" strokeWidth={2} />
-        </Nav>
-        <Side />
+        </DesktopNav>
+        <MobileActions>
+          <UnstyledButton>
+            <Icon id="shopping-bag" />
+            <VisuallyHidden>Open cart</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="search" />
+            <VisuallyHidden>Search</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="menu" />
+            <VisuallyHidden>Open menu</VisuallyHidden>
+          </UnstyledButton>
+        </MobileActions>
+        <Filler />
       </MainHeader>
 
       <MobileMenu
@@ -50,16 +63,56 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${QUERIES.tabletAndUnder} {
+    justify-content: space-between;
+    align-items: center;
+    border-top: 4px solid ${COLORS.gray[900]};
+  }
+
+  @media ${QUERIES.phoneAndUnder} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media ${QUERIES.tabletAndUnder} {
+    display: none;
+  }
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
   flex: 1;
+
+  @media ${QUERIES.tabletAndUnder} {
+    flex: revert;
+  }
+`;
+
+const MobileActions = styled.div`
+  dispaly: none;
+
+  @media ${QUERIES.tabletAndUnder} {
+    display: flex;
+    gap: 32px;
+  }
+
+  @media ${QUERIES.phoneAndUnder} {
+    gap: 16px;
+  }
+`;
+
+const Filler = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletAndUnder} {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
@@ -71,10 +124,6 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: ${COLORS.secondary};
-  }
-
-  @media ${QUERIES.tabletAndUnder} {
-    display: none;
   }
 `;
 

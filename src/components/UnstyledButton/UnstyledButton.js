@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { QUERIES } from '../../constants';
 
 export default styled.button`
   display: ${(props) => props.display || 'block'};
@@ -20,7 +19,4 @@ export default styled.button`
     outline: none;
   }
 
-  @media ${QUERIES.tabletAndUnder} {
-    display: none;
-  }
 `;

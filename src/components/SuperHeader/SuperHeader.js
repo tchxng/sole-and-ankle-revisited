@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS } from '../../constants';
-import { QUERIES } from '../../constants';
+import { COLORS, QUERIES } from '../../constants';
 import SearchInput from '../SearchInput';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -34,18 +33,13 @@ const Wrapper = styled.div`
   padding-right: 32px;
 
   @media ${QUERIES.tabletAndUnder} {
-    height: 4px;
+    display: none;
   }
-
 `;
 
 const MarketingMessage = styled.span`
   color: ${COLORS.white};
   margin-right: auto;
-
-  @media ${QUERIES.tabletAndUnder} {
-    display: none;
-  }
 `;
 
 const HelpLink = styled.a`
@@ -55,10 +49,6 @@ const HelpLink = styled.a`
 
   &:not(:focus-visible) {
     outline: none;
-  }
-
-  @media ${QUERIES.tabletAndUnder} {
-    display: none;
   }
 `;
 
