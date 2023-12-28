@@ -95,7 +95,7 @@ const LogoWrapper = styled.div`
 `;
 
 const MobileActions = styled.div`
-  dispaly: none;
+  display: none;
 
   @media ${QUERIES.tabletAndUnder} {
     display: flex;
